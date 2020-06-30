@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from './types'
 
-export default function xhr(config: AxiosRequestConfig): void {
+export default function xhr (config: AxiosRequestConfig): void {
     const { data = null, url, method = 'get', headers } = config
     const request = new XMLHttpRequest()
     request.open(method.toUpperCase(), url, true)
@@ -11,5 +11,6 @@ export default function xhr(config: AxiosRequestConfig): void {
             request.setRequestHeader(name, headers[name])
         }
     })
+    console.log('data', data)
     request.send(data)
 }
