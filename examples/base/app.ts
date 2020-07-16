@@ -98,3 +98,73 @@ axios({
 //         bar: 'baz'
 //     }
 // })
+
+axios({
+    method: 'post',
+    url: '/base/post',
+    data: {
+        a: 1,
+        b: 2
+    }
+}).then(res => {
+    console.log(res)
+})
+
+axios({
+    method: 'post',
+    url: '/base/post',
+    responseType: 'json',
+    data: {
+        a: 3,
+        b: 4
+    }
+}).then(res => {
+    console.log(res)
+})
+
+axios({
+    method: 'get',
+    url: '/error/get1'
+})
+    .then(res => {
+        console.log(res)
+    })
+    .catch(e => {
+        console.log(e)
+    })
+
+axios({
+    method: 'get',
+    url: '/error/get'
+})
+    .then(res => {
+        console.log(res)
+    })
+    .catch(e => {
+        console.log(e)
+    })
+
+setTimeout(() => {
+    axios({
+        method: 'get',
+        url: '/error/get'
+    })
+        .then(res => {
+            console.log(res)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+}, 5000)
+
+axios({
+    method: 'get',
+    url: '/error/timeout',
+    timeout: 2000
+})
+    .then(res => {
+        console.log(res)
+    })
+    .catch(e => {
+        console.log(e.message)
+    })
